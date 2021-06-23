@@ -50,3 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+MyVilla/MyVilla_Client/bin/
+MyVilla/MyVilla_Client/obj/
+MyVilla/MyVilla_Server/bin/
+MyVilla/MyVilla_Server/obj/
+MyVilla/.vs/
