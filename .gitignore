@@ -57,3 +57,6 @@ MyVilla/MyVilla_Server/obj/
 MyVilla/.vs/
 MyVilla/MyVilla.Client/obj/
 MyVilla/MyVilla.Server/obj/
+MyVilla/MyVilla.Client/bin/Debug/net5.0/wwwroot/_framework/dotnet.5.0.7.js
+MyVilla/MyVilla.Client/bin/
+MyVilla/MyVilla.Server/bin/

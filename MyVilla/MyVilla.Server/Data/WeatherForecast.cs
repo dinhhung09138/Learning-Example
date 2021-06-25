@@ -1,6 +1,6 @@
 using System;
 
-namespace MyVilla_Server.Data
+namespace MyVilla.Server.Data
 {
     public class WeatherForecast
     {

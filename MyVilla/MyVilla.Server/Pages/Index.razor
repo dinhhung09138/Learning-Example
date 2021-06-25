@@ -1,7 +1,30 @@
 ﻿@page "/"
+@using MyVilla.Server.Models
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+<h1>Hello Razor</h1>
+
+<h2 class="bg-light border p-2">
+    First Room
+</h2>
+Room: @room.Name
+<br/>
+Price: @room.Price
+<br/>
+<input type="number" @bind-value="@room.Price" @bind-value:event="oninput" />
+
+@code {
+    Room room = new Room()
+    {
+        Id = 1,
+        Name = "Villa Suite",
+        IsActive = true,
+        Price = 100
+    };
+
+
+}
