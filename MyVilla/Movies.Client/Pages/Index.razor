@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div>
+    <h3>Movies</h3>
+    <p>Title: @spiderMan.Title</p>
+    <p>Release: @spiderMan.ReleaseDate</p>
+</div>
+
+@code {
+    Movie spiderMan = new Movie()
+    {
+        Title = "Spider Man - Far From Home",
+        ReleaseDate = new DateTime(2019, 7, 10),
+    };
+}
