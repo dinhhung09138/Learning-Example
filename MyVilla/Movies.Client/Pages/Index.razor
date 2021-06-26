@@ -39,12 +39,13 @@ else
 
 @code {
 
-    List<Movie> listMovie = new List<Movie>();
+    List<Movie> listMovie;
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
+        await Task.Delay(3000);
         listMovie = new List<Movie>()
-{
+        {
             new Movie(){ Title = "Spider Man - Far From Home", ReleaseDate = new DateTime(2019, 7, 10) },
             new Movie(){ Title = "Arena", ReleaseDate= DateTime.Now },
             new Movie(){ Title = "Taken", ReleaseDate = DateTime.Now },
