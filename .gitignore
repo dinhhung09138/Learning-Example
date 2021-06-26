@@ -60,3 +60,11 @@ MyVilla/MyVilla.Server/obj/
 MyVilla/MyVilla.Client/bin/Debug/net5.0/wwwroot/_framework/dotnet.5.0.7.js
 MyVilla/MyVilla.Client/bin/
 MyVilla/MyVilla.Server/bin/
+MyVilla/BasicBlazor/bin/
+MyVilla/BasicBlazor/obj/
+MyVilla/Movie.Client/bin/
+MyVilla/Movie.Client/obj/
+MyVilla/Movie.Server/obj/
+MyVilla/Movie.Shared/obj/
+MyVilla/Movie.Shared/bin/
+MyVilla/Movie.Server/bin/
