@@ -2,8 +2,28 @@
 
 <h1>Hello, world!</h1>
 
-<MovieList />
+<MovieList Movies="listMovie" />
 
 @code {
 
+    List<Movie> listMovie = new List<Movie>();
+
+    protected override void OnInitialized()
+    {
+        listMovie = new List<Movie>()
+{
+            new Movie(){
+                Title = "Spider Man",
+                ReleaseDate = new DateTime(2019, 7, 10) 
+            },
+            new Movie(){
+                Title = "Arena",
+                ReleaseDate= DateTime.Now 
+            },
+            new Movie(){
+                Title = "Taken",
+                ReleaseDate = DateTime.Now 
+            },
+        };
+    }
 }
