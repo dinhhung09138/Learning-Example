@@ -2,61 +2,8 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<div>
-    <h3>Movies</h3>
-    <p>Title: @spiderMan.Title</p>
-    <p>Release: @spiderMan.ReleaseDate</p>
-</div>
-
-@if (listMovie == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <div>
-        @for (int i = 0; i < listMovie.Count; i++)
-        {
-            <div style="background-color: @(i % 2==0 ? "aquamarine" : "khaki")">
-                <p>@(i + 1)) Title: @listMovie[i].Title</p>
-                <p>Release: @listMovie[i].ReleaseDate</p>
-            </div>
-        }
-    </div>
-    <div>
-        @foreach (var movie in listMovie)
-        {
-            <p>Title: @movie.Title</p>
-            <p>Release: @movie.ReleaseDate</p>
-        }
-    </div>
-}
-
+<MovieList />
 
 @code {
 
-    List<Movie> listMovie;
-
-    protected async override Task OnInitializedAsync()
-    {
-        await Task.Delay(3000);
-        listMovie = new List<Movie>()
-        {
-            new Movie(){ Title = "Spider Man - Far From Home", ReleaseDate = new DateTime(2019, 7, 10) },
-            new Movie(){ Title = "Arena", ReleaseDate= DateTime.Now },
-            new Movie(){ Title = "Taken", ReleaseDate = DateTime.Now },
-        };
-
-
-    }
-
-    Movie spiderMan = new Movie()
-    {
-        Title = "Spider Man - Far From Home",
-        ReleaseDate = new DateTime(2019, 7, 10),
-    };
 }

@@ -1,0 +1,36 @@
+﻿<h3>MovieList</h3>
+
+<div>
+    <h3>Movies</h3>
+</div>
+
+@if (listMovie == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+<div>
+    @foreach (var movie in listMovie)
+    {
+        <p>Title: @movie.Title</p>
+        <p>Release: @movie.ReleaseDate</p>
+    }
+</div>
+}
+
+@code {
+    List<Movie> listMovie = new List<Movie>();
+
+    protected override void OnInitialized()
+    {
+        listMovie = new List<Movie>()
+        {
+            new Movie(){ Title = "Spider Man - Far From Home", ReleaseDate = new DateTime(2019, 7, 10) },
+            new Movie(){ Title = "Arena", ReleaseDate= DateTime.Now },
+            new Movie(){ Title = "Taken", ReleaseDate = DateTime.Now },
+        };
+
+
+    }
+}
