@@ -1,0 +1,19 @@
+﻿
+
+<input type="text" placeholder="Default place holder" @attributes="AdditionalParameters"/>
+
+@code {
+
+
+    // 1
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalParameters { get; set; }
+
+    // 2
+    Dictionary<string, object> addtionalParams = new Dictionary<string, object>()
+    {
+        { "class", "form-control" },
+        { "style", "font-weight: bold" },
+    };
+
+}

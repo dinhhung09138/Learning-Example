@@ -4,9 +4,27 @@
 
 <MovieList Movies="listMovie" />
 
+
+
+<DummyTextbox placeholder="Movie title" />
+
+<DummyTextbox @attributes="@(new Dictionary<string, object>() {
+                                 { "placeholder", "The movie name"},
+                                 { "disabled", "true"},
+                             })" />
+
+
+<DummyTextbox AdditionalParameters="dummyParams" />
+
 @code {
 
     List<Movie> listMovie = new List<Movie>();
+
+    Dictionary<string, object> dummyParams = new Dictionary<string, object>()
+    {
+        { "placeholder", "The movie name 2"},
+        { "disabled", "true"},
+    };
 
     protected override void OnInitialized()
     {
@@ -14,15 +32,15 @@
 {
             new Movie(){
                 Title = "Spider Man",
-                ReleaseDate = new DateTime(2019, 7, 10) 
+                ReleaseDate = new DateTime(2019, 7, 10)
             },
             new Movie(){
                 Title = "Arena",
-                ReleaseDate= DateTime.Now 
+                ReleaseDate= DateTime.Now
             },
             new Movie(){
                 Title = "Taken",
-                ReleaseDate = DateTime.Now 
+                ReleaseDate = DateTime.Now
             },
         };
     }
