@@ -1,9 +1,17 @@
 ﻿<div>
     <p>Title: @Movie.Title</p>
     <p>Release: @Movie.ReleaseDate</p>
+    @if (DisplayDeleteButton == true)
+    {
+        <button>Delete</button>
+    }
+
 </div>
 
 @code {
-    [Parameter] 
+    [Parameter]
     public Movie Movie { get; set; }
+
+    [Parameter]
+    public bool DisplayDeleteButton { get; set; } = false;
 }

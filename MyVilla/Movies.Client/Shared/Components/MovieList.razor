@@ -10,14 +10,22 @@
 }
 else
 {
+    <input type="checkbox" @onchange="(() => displayDeleteButton = !displayDeleteButton)" />
+    <span> &nbsp;Display Delete button</span>
+    <br/>
     <div>
         @foreach (var movie in Movies)
         {
-           <IndividualMovie Movie="movie" />
+           <IndividualMovie Movie="movie" DisplayDeleteButton="displayDeleteButton" />
         }
     </div>
 }
 
 @code {
-    [Parameter] public List<Movie> Movies { get; set; }
+
+    [Parameter]
+    public List<Movie> Movies { get; set; }
+
+    bool displayDeleteButton = false;
+
 }
