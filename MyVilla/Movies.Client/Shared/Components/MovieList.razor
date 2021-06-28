@@ -10,13 +10,15 @@
 }
 else
 {
-    <input type="checkbox" @onchange="(() => displayDeleteButton = !displayDeleteButton)" />
+    <input type="checkbox" @bind="displayDeleteButton" />
     <span> &nbsp;Display Delete button</span>
     <br/>
     <div>
         @foreach (var movie in Movies)
         {
-           <IndividualMovie Movie="movie" DisplayDeleteButton="displayDeleteButton" />
+           <IndividualMovie Movie="movie" 
+                            DisplayDeleteButton="displayDeleteButton" 
+                            DeleteEvent="DeleteMovie" />
         }
     </div>
 }
@@ -27,5 +29,10 @@ else
     public List<Movie> Movies { get; set; }
 
     bool displayDeleteButton = false;
+
+    private void DeleteMovie(Movie movie)
+    {
+        Movies.Remove(movie);
+    }
 
 }

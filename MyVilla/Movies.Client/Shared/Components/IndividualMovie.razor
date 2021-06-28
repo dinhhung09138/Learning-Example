@@ -1,9 +1,12 @@
-﻿<div>
+﻿
+<div>
     <p>Title: @Movie.Title</p>
     <p>Release: @Movie.ReleaseDate</p>
     @if (DisplayDeleteButton == true)
     {
-        <button>Delete</button>
+        <button @onclick="@(()=> DeleteEvent.InvokeAsync(Movie))">
+            Delete
+        </button>
     }
 
 </div>
@@ -14,4 +17,7 @@
 
     [Parameter]
     public bool DisplayDeleteButton { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<Movie> DeleteEvent { get; set; }
 }
