@@ -1,0 +1,55 @@
+﻿
+
+@typeparam TItem
+
+@if (Data == null)
+{
+    @if (NullContent != null)
+    {
+        @NullContent
+    }
+    else
+    {
+        <span style="color: red;">Loading default...</span>
+    }
+}
+else if (Data.Count == 0)
+{
+    @if (EmptyContent != null)
+    {
+        @EmptyContent
+    }
+    else
+    {
+        <span style="color: blue;">No data found - default...</span>
+    }
+}
+else
+{
+    <span> &nbsp;Display Delete button</span>
+    <br />
+    <div>
+        @foreach (var element in Data)
+        {
+            @ElementTemplate.Invoke(element)
+        }
+    </div>
+}
+
+
+
+@code {
+
+    [Parameter]
+    public RenderFragment NullContent { get; set; }
+
+    [Parameter]
+    public RenderFragment EmptyContent { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> ElementTemplate { get; set; }
+
+    [Parameter]
+    public List<TItem> Data { get; set; }
+    
+}

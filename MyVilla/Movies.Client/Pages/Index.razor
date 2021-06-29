@@ -1,20 +1,6 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
-
 <MovieList Movies="listMovie" />
-
-
-
-<DummyTextbox placeholder="Movie title" />
-
-<DummyTextbox @attributes="@(new Dictionary<string, object>() {
-                                 { "placeholder", "The movie name"},
-                                 { "disabled", "true"},
-                             })" />
-
-
-<DummyTextbox AdditionalParameters="dummyParams" />
 
 @code {
 
@@ -29,7 +15,7 @@
     protected override void OnInitialized()
     {
         listMovie = new List<Movie>()
-{
+        {
             new Movie(){
                 Title = "Spider Man",
                 ReleaseDate = new DateTime(2019, 7, 10)

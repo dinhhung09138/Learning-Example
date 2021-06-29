@@ -1,27 +1,24 @@
-﻿<h3>MovieList</h3>
-
+﻿
 <div>
     <h3>Movies</h3>
 </div>
 
-@if (Movies == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <input type="checkbox" @bind="displayDeleteButton" />
-    <span> &nbsp;Display Delete button</span>
-    <br/>
-    <div>
-        @foreach (var movie in Movies)
-        {
-           <IndividualMovie Movie="movie" 
-                            DisplayDeleteButton="displayDeleteButton" 
-                            DeleteEvent="DeleteMovie" />
-        }
-    </div>
-}
+<input type="checkbox" @bind="displayDeleteButton" />
+
+<GenericList Data="Movies">
+    <ElementTemplate>
+        <IndividualMovie Movie="context" 
+                         DisplayDeleteButton="displayDeleteButton" 
+                         DeleteEvent="DeleteMovie" />
+    </ElementTemplate>
+</GenericList>
+<GenericList Data="Movies">
+    <ElementTemplate Context="movie">
+        <IndividualMovie Movie="movie" 
+                         DisplayDeleteButton="displayDeleteButton" 
+                         DeleteEvent="DeleteMovie" />
+    </ElementTemplate>
+</GenericList>
 
 @code {
 
@@ -34,5 +31,4 @@ else
     {
         Movies.Remove(movie);
     }
-
 }
