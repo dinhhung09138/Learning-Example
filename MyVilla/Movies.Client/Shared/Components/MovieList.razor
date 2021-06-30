@@ -7,15 +7,15 @@
 
 <GenericList Data="Movies">
     <ElementTemplate>
-        <IndividualMovie Movie="context" 
-                         DisplayDeleteButton="displayDeleteButton" 
+        <IndividualMovie Movie="context"
+                         DisplayDeleteButton="displayDeleteButton"
                          DeleteEvent="DeleteMovie" />
     </ElementTemplate>
 </GenericList>
 <GenericList Data="Movies">
     <ElementTemplate Context="movie">
-        <IndividualMovie Movie="movie" 
-                         DisplayDeleteButton="displayDeleteButton" 
+        <IndividualMovie Movie="movie"
+                         DisplayDeleteButton="displayDeleteButton"
                          DeleteEvent="DeleteMovie" />
     </ElementTemplate>
 </GenericList>
@@ -30,5 +30,26 @@
     private void DeleteMovie(Movie movie)
     {
         Movies.Remove(movie);
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"ONInitialized, Movie count = {Movies.Count()}");
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"OnParameterSet, Movie count = {Movies.Count()}");
+    }
+
+    protected override bool ShouldRender()
+    {
+        // If you set false, The UI will not rerender after some change
+        return true;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"OnAfterRender, First Render = {firstRender}");
     }
 }

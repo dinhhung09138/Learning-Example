@@ -1,13 +1,15 @@
 ﻿@page "/"
 
 <MovieList Movies="listMovie" />
+<br/>
+<button @onclick="AddNewMovie">Add new movie</button>
 
 @code {
 
     List<Movie> listMovie = new List<Movie>();
 
     Dictionary<string, object> dummyParams = new Dictionary<string, object>()
-    {
+{
         { "placeholder", "The movie name 2"},
         { "disabled", "true"},
     };
@@ -15,7 +17,7 @@
     protected override void OnInitialized()
     {
         listMovie = new List<Movie>()
-        {
+    {
             new Movie(){
                 Title = "Spider Man",
                 ReleaseDate = new DateTime(2019, 7, 10)
@@ -29,5 +31,10 @@
                 ReleaseDate = DateTime.Now
             },
         };
+    }
+
+    private void AddNewMovie()
+    {
+        listMovie.Add(new Movie() { Title = "New Movie", ReleaseDate = DateTime.Today });
     }
 }
