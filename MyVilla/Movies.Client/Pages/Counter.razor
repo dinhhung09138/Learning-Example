@@ -1,8 +1,13 @@
 ﻿@page "/counter"
 
+@inject SingleTonService singleTon
+@inject TransientService transient
+
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
+<p>SingleTon: @singleTon.Value</p>
+<p>transient: @transient.Value</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
@@ -14,5 +19,7 @@
     private void IncrementCount()
     {
         currentCount++;
+        singleTon.Value += 1;
+        transient.Value += 1;
     }
 }

@@ -19,7 +19,16 @@ namespace Movies.Client
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+            AddingService(builder.Services);
+
             await builder.Build().RunAsync();
+        }
+
+
+        private static void AddingService(IServiceCollection services)
+        {
+            services.AddSingleton<SingleTonService>();
+            services.AddTransient<TransientService>();
         }
     }
 }
