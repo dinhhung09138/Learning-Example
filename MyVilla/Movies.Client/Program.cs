@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Movies.Client.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -29,6 +30,7 @@ namespace Movies.Client
         {
             services.AddSingleton<SingleTonService>();
             services.AddTransient<TransientService>();
+            services.AddTransient<IRepository, MemoryRepository>();
         }
     }
 }
