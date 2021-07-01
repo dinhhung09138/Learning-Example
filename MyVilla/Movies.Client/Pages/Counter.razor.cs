@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Movies.Client.Pages
 {
@@ -14,13 +15,40 @@ namespace Movies.Client.Pages
         [Inject] 
         TransientService transient {get; set;}
 
+        [Inject]
+        public IJSRuntime js { get; set; }
+
+        private IJSObjectReference counterJs;
+
         private int currentCount = 0;
 
-        private void IncrementCount()
+        private static int staticCounter = 0;
+
+        [JSInvokable]
+        public async Task IncrementCount()
         {
+            counterJs = await js.InvokeAsync<IJSObjectReference>("import", "./js/Counter.js");
+
+            await counterJs.InvokeVoidAsync("Alert", "Hello world");
+            await counterJs.InvokeVoidAsync("ConsoleLog", "Log Hello world");
+
             currentCount++;
             singleTon.Value += 1;
             transient.Value += 1;
+            staticCounter += 1;
+
+            await js.InvokeVoidAsync("dotnetStaticInvocation");
+        }
+
+        public async Task IncrementCountJavaScript()
+        {
+            await js.InvokeVoidAsync("dotNetInstanceInvocation", DotNetObjectReference.Create(this));
+        }
+
+        [JSInvokable]
+        public static Task<int> GetStaticCounter()
+        {
+            return Task.FromResult(staticCounter);
         }
 
     }

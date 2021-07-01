@@ -1,4 +1,6 @@
 ﻿
+@inject IJSRuntime js 
+
 <div>
     <h3>Movies</h3>
 </div>
@@ -25,11 +27,17 @@
     [Parameter]
     public List<Movie> Movies { get; set; }
 
-    bool displayDeleteButton = false;
+    bool displayDeleteButton = true;
 
-    private void DeleteMovie(Movie movie)
+    private async Task DeleteMovie(Movie movie)
     {
-        Movies.Remove(movie);
+        await js.WriteLog("Delete movie function");
+        var result = await js.Confirm($"Are you sure to delete {movie.Title}");
+
+        if (result == true)
+        {
+            Movies.Remove(movie);
+        }
     }
 
     protected override void OnInitialized()
