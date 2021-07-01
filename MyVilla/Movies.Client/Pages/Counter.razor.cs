@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using static Movies.Client.Shared.MainLayout;
 
 namespace Movies.Client.Pages
 {
@@ -19,6 +20,9 @@ namespace Movies.Client.Pages
         public IJSRuntime js { get; set; }
 
         private IJSObjectReference counterJs;
+
+        [CascadingParameter(Name = "AppSetting")]
+        public AppSetting appSetting { get; set; }
 
         private int currentCount = 0;
 
