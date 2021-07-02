@@ -1,11 +1,14 @@
 ﻿
+
+@inject NavigationManager navigationManager
+
 <div class="individual-movie-container">
     <a href="@movieUrl">
         <img src="@Movie.Poster" alt="Poster" class="movie-poster" />
     </a>
     <p><a href="@movieUrl">@Movie.TitleBrief</a></p>
     <div>
-        <a class="btn btn-info">Edit</a>
+        <a class="btn btn-info" @onclick="EditMovie">Edit</a>
         <a class="btn btn-danger" @onclick="(() => DeleteMovie.InvokeAsync())">Delete</a>
     </div>
 </div>
@@ -21,4 +24,14 @@
     public EventCallback<Movie> DeleteMovie { get; set; }
 
     private string movieUrl = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        movieUrl = $"movie/{Movie.Id}";
+    }
+
+    private void EditMovie()
+    {
+        navigationManager.NavigateTo(movieUrl);
+    }
 }
