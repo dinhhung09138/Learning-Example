@@ -1,9 +1,11 @@
-﻿@page "/"
+﻿
+@page "/"
+@page "/index"
 
 @inject IRepository memoryRepository;
 
 <MovieList Movies="listMovie" />
-<br/>
+<br />
 <button @onclick="AddNewMovie">Add new movie</button>
 
 @code {
