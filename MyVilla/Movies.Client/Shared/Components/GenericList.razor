@@ -26,14 +26,10 @@ else if (Data.Count == 0)
 }
 else
 {
-    <span> &nbsp;Display Delete button</span>
-    <br />
-    <div>
-        @foreach (var element in Data)
-        {
-            @ElementTemplate.Invoke(element)
-        }
-    </div>
+    @foreach (var element in Data)
+    {
+        @ElementTemplate.Invoke(element)
+    }
 }
 
 

@@ -1,27 +1,8 @@
-﻿@page "/counter"
-
-    <div>
-
-    </div>
-
-    <h1 style="color: @appSetting.Color; font-size: @appSetting.Size">Counter</h1>
-
-    <div style="display: flex">
-        <div style="width: 150px">
-            <label>Select color</label>
-            <select @bind="appSetting.Color">
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="yellow">Yellow</option>
-            </select>
-        </div>
-    </div>
+﻿
+@page "/counter"
 
     <p>Current count: @currentCount</p>
-    <p>SingleTon: @singleTon.Value</p>
-    <p>transient: @transient.Value</p>
 
     <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-    <button class="btn btn-primary" @onclick="IncrementCountJavaScript">Click me JS</button>
 
     <input type="number" @bind="currentCount" />

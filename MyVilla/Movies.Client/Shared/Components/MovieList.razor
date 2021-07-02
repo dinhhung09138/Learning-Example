@@ -6,21 +6,15 @@
 </div>
 
 <input type="checkbox" @bind="displayDeleteButton" />
+<div class="movies-container">
+    <GenericList Data="Movies">
+        <ElementTemplate>
+            <IndividualMovie Movie="context"
+                             DeleteMovie="DeleteMovie" />
+        </ElementTemplate>
+    </GenericList>
+</div>
 
-<GenericList Data="Movies">
-    <ElementTemplate>
-        <IndividualMovie Movie="context"
-                         DisplayDeleteButton="displayDeleteButton"
-                         DeleteEvent="DeleteMovie" />
-    </ElementTemplate>
-</GenericList>
-<GenericList Data="Movies">
-    <ElementTemplate Context="movie">
-        <IndividualMovie Movie="movie"
-                         DisplayDeleteButton="displayDeleteButton"
-                         DeleteEvent="DeleteMovie" />
-    </ElementTemplate>
-</GenericList>
 
 @code {
 
@@ -31,33 +25,7 @@
 
     private async Task DeleteMovie(Movie movie)
     {
-        await js.WriteLog("Delete movie function");
-        var result = await js.Confirm($"Are you sure to delete {movie.Title}");
-
-        if (result == true)
-        {
-            Movies.Remove(movie);
-        }
+        Movies.Remove(movie);
     }
 
-    protected override void OnInitialized()
-    {
-        Console.WriteLine($"ONInitialized, Movie count = {Movies.Count()}");
-    }
-
-    protected override void OnParametersSet()
-    {
-        Console.WriteLine($"OnParameterSet, Movie count = {Movies.Count()}");
-    }
-
-    protected override bool ShouldRender()
-    {
-        // If you set false, The UI will not rerender after some change
-        return true;
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        Console.WriteLine($"OnAfterRender, First Render = {firstRender}");
-    }
 }

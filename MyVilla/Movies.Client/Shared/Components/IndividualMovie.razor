@@ -1,14 +1,13 @@
 ﻿
-<div>
-    <p>Title: @Movie.Title</p>
-    <p>Release: @Movie.ReleaseDate</p>
-    @if (DisplayDeleteButton == true)
-    {
-        <button @onclick="@(()=> DeleteEvent.InvokeAsync(Movie))">
-            Delete
-        </button>
-    }
-
+<div class="individual-movie-container">
+    <a>
+        <img src="@Movie.Poster" alt="Poster" class="movie-poster" />
+    </a>
+    <p>@Movie.TitleBrief</p>
+    <div>
+        <a class="btn btn-info">Edit</a>
+        <a class="btn btn-danger" @onclick="(() => DeleteMovie.InvokeAsync())">Delete</a>
+    </div>
 </div>
 
 @code {
@@ -19,5 +18,5 @@
     public bool DisplayDeleteButton { get; set; } = false;
 
     [Parameter]
-    public EventCallback<Movie> DeleteEvent { get; set; }
+    public EventCallback<Movie> DeleteMovie { get; set; }
 }

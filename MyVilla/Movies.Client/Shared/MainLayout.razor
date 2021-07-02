@@ -11,23 +11,7 @@
         </div>
 
         <div class="content px-4">
-            <CascadingValue Name="AppSetting" Value="appSetting">
-                @Body
-            </CascadingValue>
-            
+                @Body            
         </div>
     </div>
 </div>
-
-@code {
-
-
-    AppSetting appSetting = new AppSetting();
-
-    public class AppSetting
-    {
-        public string Color { get; set; } = "red";
-
-        public string Size { get; set; } = "19px";
-    }
-}

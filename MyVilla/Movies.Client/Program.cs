@@ -28,8 +28,6 @@ namespace Movies.Client
 
         private static void AddingService(IServiceCollection services)
         {
-            services.AddSingleton<SingleTonService>();
-            services.AddTransient<TransientService>();
             services.AddTransient<IRepository, MemoryRepository>();
         }
     }
