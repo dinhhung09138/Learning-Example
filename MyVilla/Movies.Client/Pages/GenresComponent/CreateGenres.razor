@@ -1,7 +1,23 @@
-﻿@page "/genres/create"
+﻿@page "/genre/create"
 
 <h3>CreateGenres</h3>
 
-@code {
+<EditForm Model="genre" OnSubmit="Create">
+    <div class="form-group">
+        <label>Name:</label>
+        <div>
+            <InputText @bind-Value="genre.Name" class="form-control" />
+        </div>
+    </div>
 
+    <button class="btn btn-success" type="submit">Save Changes</button>
+</EditForm>
+
+@code {
+    private Genre genre = new Genre();
+
+    private void Create()
+    {
+        Console.WriteLine("Save genre" + genre.Name);
+    }
 }
