@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using MathNet.Numerics.Statistics;
 
 namespace Movies.Client.Pages
 {
@@ -19,14 +20,17 @@ namespace Movies.Client.Pages
         [JSInvokable]
         public async Task IncrementCount()
         {
+            var array = new double[] { 1, 2, 3, 4, 5 };
+            var max = array.Maximum();
+            var min = array.Minimum();
+
             counterJs = await js.InvokeAsync<IJSObjectReference>("import", "./js/Counter.js");
 
-            await counterJs.InvokeVoidAsync("Alert", "Hello world");
-            await counterJs.InvokeVoidAsync("ConsoleLog", "Log Hello world");
+            await counterJs.InvokeVoidAsync("Alert", $"Max value {max}, Min value {min}");
+            await counterJs.InvokeVoidAsync("ConsoleLog", $"Max value {max}, Min value {min}");
 
             currentCount++;
 
-            await js.InvokeVoidAsync("dotnetStaticInvocation");
         }
 
     }
