@@ -1,0 +1,80 @@
+﻿@page "/movies/search"
+
+@inject IRepository repository
+
+<h3>Search Movies</h3>
+
+<div class="form-inline">
+    <div class="form-group mb-2">
+        <label for="title" class="sr-only">Title></label>
+        <input typetext class="form-control" id="title" placeholder="Movie Title"
+               @bind-value="title"
+               @bind-value:event="oninput"
+               @onkeypress="@((KeyboardEventArgs e) => TitleKeyPress(e))" />
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <select class="form-control" @bind="selectedGenre">
+            <option value="0">Select</option>
+        </select>
+        @foreach (var item in genre)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </div>
+    <div class="form-group mx-sm-5 mb-2">
+        <input type="checkbox" class="form-check-inline" id="upcommingReleases" @bind="upcommingRelease" />
+        <label class="form-check-label" for="upcommingRelease">Upcomming Release</label>
+    </div>
+    <div class="form-group mx-sm-5 mb-2">
+        <input type="checkbox" class="form-check-inline" id="upcommingReleases" @bind="inTheaters" />
+        <label class="form-check-label" for="upcommingRelease">Upcomming Release</label>
+    </div>
+    <button type="button" class="btn btn-primary mb-2 mx-sm-3" @onclick="SearchForMovies">Filter</button>
+    <button type="button" class="btn btn-primary mb-2 mx-sm-3" @onclick="Clear">Clear</button>
+</div>
+
+<MovieList Movies="movies" />
+
+@code {
+
+    string title = "";
+    int selectedGenre = 0;
+    bool upcommingRelease = false;
+    bool inTheaters = false;
+    List<Genre> genre = new List<Genre>();
+    List<Movie> movies = new List<Movie>();
+
+    protected override void OnInitialized()
+    {
+        movies = repository.GetList();
+    }
+
+    private void TitleKeyPress(KeyboardEventArgs e)
+    {
+        if (string.IsNullOrEmpty(title))
+        {
+            return;
+        }
+        if (e.Key == "Enter")
+        {
+            SearchForMovies();
+        }
+    }
+
+    private void SearchForMovies()
+    {
+        movies = repository.GetList().Where(m => m.Title.ToLower().Contains((title ?? "").ToLower())).ToList();
+
+        Console.WriteLine("Title: " + title);
+        //Console.WriteLine("Genre: " + genre.FirstOrDefault(m => m.Id == selectedGenre).Name);
+        //Console.WriteLine("Upcomming: " + (upcommingRelease ? "true" : "false"));
+        //Console.WriteLine("In Theaters: " + (inTheaters ? "true" : "false"));
+    }
+
+    private void Clear()
+    {
+        Console.WriteLine("Clear function");
+        SearchForMovies();
+    }
+
+}

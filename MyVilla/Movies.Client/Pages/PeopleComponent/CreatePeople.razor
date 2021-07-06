@@ -1,8 +1,17 @@
-﻿@page "/people/create"
+﻿@page "/person/create"
 
 
 <h3>CreatePeople</h3>
 
+<PersonForm Person="person" OnValidSubmit="OnSubmit" />
+
 @code {
+
+    Person person = new Person();
+
+    private void OnSubmit()
+    {
+
+    }
 
 }
