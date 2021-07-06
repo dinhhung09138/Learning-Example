@@ -2,11 +2,17 @@
 
 @inject NavigationManager navManager
 
-<MovieForm Movie="movie" OnValidSubmit="Save" />
+<MovieForm Movie="movie" OnValidSubmit="Save" NotSelectedGenres="NotSelectedGenres" />
 
 @code {
 
     private Movie movie = new Movie();
+    private List<Genre> NotSelectedGenres = new List<Genre>()
+    {
+        new Genre(){ Id = 1, Name = "Action" },
+        new Genre(){ Id = 2, Name = "Comedy" },
+        new Genre(){ Id = 3, Name = "Drama" },
+    };
 
     private void Save()
     {

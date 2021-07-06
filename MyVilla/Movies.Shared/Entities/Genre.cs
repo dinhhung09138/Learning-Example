@@ -14,5 +14,8 @@ namespace Movies.Shared.Entities
         [Required(ErrorMessage = "This field is required")]
 
         public string Name { get; set; }
+
+        public List<MovieGenres> MovieGenres { get; set; } = new List<MovieGenres>();
+
     }
 }

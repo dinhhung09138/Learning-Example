@@ -1,0 +1,58 @@
+﻿@using Movies.Client.Helpers
+
+<div class="multiple-selecotr">
+    <ul class="selectable-ul">
+        @foreach (var item in NotSelected)
+        {
+            <li @onclick="@(() => Select(item))">@item.Value</li>
+        }
+    </ul>
+    <div class="multiple-selector-buttons">
+        <button type="button" @onclick="SelectAll">>></button>
+        <button type="button" @onclick="DeSelectAll">@deSelectMessage</button>
+    </div>
+    <ul class="selectable-ul">
+        @foreach (var item in Selected)
+        {
+            <li @onclick="@(() => DeSelect(item))">@item.Value</li>
+        }
+    </ul>
+</div>
+
+
+
+@code {
+
+    [Parameter]
+    public List<MultipleSelectorModel> NotSelected { get; set; } = new List<MultipleSelectorModel>();
+
+    [Parameter]
+    public List<MultipleSelectorModel> Selected { get; set; } = new List<MultipleSelectorModel>();
+
+    string deSelectMessage = "<<";
+
+    private void Select(MultipleSelectorModel item)
+    {
+        NotSelected.Remove(item);
+        Selected.Add(item);
+    }
+
+    private void DeSelect(MultipleSelectorModel item)
+    {
+        NotSelected.Add(item);
+        Selected.Remove(item);
+    }
+
+    private void SelectAll()
+    {
+        Selected.AddRange(NotSelected);
+        NotSelected.Clear();
+    }
+
+    private void DeSelectAll()
+    {
+        NotSelected.AddRange(Selected);
+        Selected.Clear();
+    }
+
+}

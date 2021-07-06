@@ -37,6 +37,12 @@
         <InputMarkdown @bind-Value="Movie.Summary" Label="Summary" For="@(() => Movie.Summary)" />
     </div>
     <div class="form-group">
+        <label>Genres:</label>
+        <div>
+            <MultipleSelector Selected="Selected" NotSelected="NotSelected"></MultipleSelector>
+        </div>
+    </div>
+    <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </EditForm>
@@ -48,10 +54,21 @@
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 
-    string imageUrl = null;
+    [Parameter]
+    public List<Genre> SelectedGenres { get; set; } = new List<Genre>();
+
+    [Parameter]
+    public List<Genre> NotSelectedGenres { get; set; } = new List<Genre>();
+
+    private string imageUrl = null;
+    private List<MultipleSelectorModel> Selected = new List<MultipleSelectorModel>();
+    private List<MultipleSelectorModel> NotSelected = new List<MultipleSelectorModel>();
 
     protected override void OnInitialized()
     {
+        Selected = SelectedGenres.Select(m => new MultipleSelectorModel(m.Id.ToString(), m.Name)).ToList();
+        NotSelected = NotSelectedGenres.Select(m => new MultipleSelectorModel(m.Id.ToString(), m.Name)).ToList();
+
         if (!string.IsNullOrEmpty(Movie.Poster))
         {
             imageUrl = Movie.Poster;

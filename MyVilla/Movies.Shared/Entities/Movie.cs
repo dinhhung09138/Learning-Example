@@ -26,6 +26,8 @@ namespace Movies.Shared.Entities
 
         public string Poster { get; set; }
 
+        public List<MovieGenres> MovieGenres { get; set; } = new List<MovieGenres>();
+
         public string TitleBrief {
             get 
             {
