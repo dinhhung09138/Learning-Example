@@ -2,11 +2,11 @@
 
 @inject NavigationManager navManager
 
-<h3>CreateMovie</h3>
-
-<button class="btn btn-primary" @onclick="Save">Save movie</button>
+<MovieForm Movie="movie" OnValidSubmit="Save" />
 
 @code {
+
+    private Movie movie = new Movie();
 
     private void Save()
     {

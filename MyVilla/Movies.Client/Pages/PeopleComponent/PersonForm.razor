@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="form-group form-markdown">
-        <InputMarkdown @bind-Value="Person.Biography" Label="Biography" For="@(() => Person.Biography)"/>
+        <InputMarkdown @bind-Value="Person.Biography" Label="Biography" For="@(() => Person.Biography)" />
     </div>
     <div class="form-group">
         <label for="dateOfBirth">Date of Birth</label>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="form-group">
-        <InputImage Label="Picture" OnSelectedImage="OnSelectedImage" />
+        <InputImage Label="Picture" OnSelectedImage="OnSelectedImage" ImageUrl="@imageUrl" />
     </div>
     <div class="form-group">
         <button type="button" class="btn btn-success">Submit</button>
@@ -34,8 +34,20 @@
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 
+    string imageUrl = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        if (!string.IsNullOrEmpty(Person.Picture))
+        {
+            imageUrl = Person.Picture;
+            Person.Picture = string.Empty;
+        }
+    }
+
     private void OnSelectedImage(string imageBase64)
     {
         Person.Picture = imageBase64;
+        imageUrl = string.Empty;
     }
 }

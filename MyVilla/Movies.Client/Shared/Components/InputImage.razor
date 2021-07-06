@@ -15,6 +15,14 @@
             </div>
         </div>
     }
+    @if (!string.IsNullOrEmpty(ImageUrl))
+    {
+        <div>
+            <div style="margin:10px">
+                <img src="@ImageUrl" style="width: 400px;" />
+            </div>
+        </div>
+    }
 </div>
 
 @code {
@@ -26,6 +34,9 @@
 
     [Parameter]
     public EventCallback<string> OnSelectedImage { get; set; }
+
+    [Parameter]
+    public string ImageUrl { get; set; }
 
     private string imageBase64;
 
@@ -44,6 +55,7 @@
 
             imageBase64 = Convert.ToBase64String(data);
             await OnSelectedImage.InvokeAsync(imageBase64);
+            ImageUrl = string.Empty;
             StateHasChanged();
         }
     }

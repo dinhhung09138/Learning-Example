@@ -1,33 +1,30 @@
-﻿@page "/movies/edit"
+﻿@page "/movies/edit/{MovieId:int}"
 
 
 @inject IJSRuntime js
 
-<div>
-    <h1>Movies</h1>
-</div>
+@if (movie != null)
+{
+    <MovieForm Movie="movie" OnValidSubmit="Save"></MovieForm>
+}
 
-<input type="checkbox" @bind="displayDeleteButton" />
-<div class="movies-container">
-    <GenericList Data="Movies">
-        <ElementTemplate>
-            <IndividualMovie Movie="context"
-                             DeleteMovie="DeleteMovie" />
-        </ElementTemplate>
-    </GenericList>
-</div>
 
 
 @code {
 
     [Parameter]
-    public List<Movie> Movies { get; set; }
+    public int MovieId { get; set; }
 
-    bool displayDeleteButton = true;
+    private Movie movie = new Movie();
 
-    private async Task DeleteMovie(Movie movie)
+    protected override void OnInitialized()
     {
-        Movies.Remove(movie);
+        movie = new Movie() { Id = 1, Title = "Movie title" };
+    }
+
+    private async Task Save()
+    {
+
     }
 
 }
