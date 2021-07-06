@@ -1,0 +1,50 @@
+﻿@using System.IO;
+
+<div>
+    <label>@Label</label>
+    <div>
+        <InputFile accept=".jpg,.jpeg,.png" OnChange="OnChange" />
+    </div>
+</div>
+<div>
+    @if (!string.IsNullOrEmpty(imageBase64))
+    {
+        <div>
+            <div style="margin:10px">
+                <img src="data:image/jpeg;base64, @imageBase64" style="width: 400px;" />
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+
+    long maxFileSize = 1024 * 1024 * 1024;
+
+    [Parameter]
+    public string Label { get; set; } = "Image";
+
+    [Parameter]
+    public EventCallback<string> OnSelectedImage { get; set; }
+
+    private string imageBase64;
+
+    async Task OnChange(InputFileChangeEventArgs e)
+    {
+        var imagesFile = e.GetMultipleFiles();
+        foreach (var img in imagesFile)
+        {
+            var ms = new MemoryStream();
+
+            await img.OpenReadStream().CopyToAsync(ms);
+
+            var arrayContent = new ByteArrayContent(ms.GetBuffer());
+
+            var data = await arrayContent.ReadAsByteArrayAsync();
+
+            imageBase64 = Convert.ToBase64String(data);
+            await OnSelectedImage.InvokeAsync(imageBase64);
+            StateHasChanged();
+        }
+    }
+}
