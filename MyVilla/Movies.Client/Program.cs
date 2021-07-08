@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Movies.Client.Helpers;
+using Movies.Client.Repository;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -29,6 +30,8 @@ namespace Movies.Client
         private static void AddingService(IServiceCollection services)
         {
             services.AddTransient<IRepository, MemoryRepository>();
+            services.AddScoped<IHttpService, HttpService>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
         }
     }
 }
