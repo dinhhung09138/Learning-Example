@@ -7,13 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyVilla.Client", "MyVilla.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyVilla.Server", "MyVilla.Server\MyVilla.Server.csproj", "{2FC16342-51E5-44F5-AFA3-BF2F5DA5B174}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicBlazor", "BasicBlazor\BasicBlazor.csproj", "{D8D68EDB-5944-47AA-A6DD-174CB8FE42B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicBlazor", "BasicBlazor\BasicBlazor.csproj", "{D8D68EDB-5944-47AA-A6DD-174CB8FE42B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Shared", "Movies.Shared\Movies.Shared.csproj", "{FB36273C-F154-4249-8551-084E0904EC40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Shared", "Movies.Shared\Movies.Shared.csproj", "{FB36273C-F154-4249-8551-084E0904EC40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Client", "Movies.Client\Movies.Client.csproj", "{F5A14C20-DED4-4001-9969-E96DEDD0FC33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Client", "Movies.Client\Movies.Client.csproj", "{F5A14C20-DED4-4001-9969-E96DEDD0FC33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Server", "Movies.Server\Movies.Server.csproj", "{43E7DA50-7718-401C-BD2F-FF64B4092464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Server", "Movies.Server\Movies.Server.csproj", "{43E7DA50-7718-401C-BD2F-FF64B4092464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVilla.DataAccess", "MyVilla.DataAccess\MyVilla.DataAccess.csproj", "{2DE4D53E-7901-4A00-B8A9-4BD2BD0CC3E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVilla.Business", "MyVilla.Business\MyVilla.Business.csproj", "{AEF760B5-8C1E-43A6-B2AE-B8F9EAA62AFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVilla.Models", "MyVilla.Models\MyVilla.Models.csproj", "{C433BD0A-E6E6-4978-BED1-E63F1C5115B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVilla.Common", "MyVilla.Common\MyVilla.Common.csproj", "{48165F72-DD62-4C8C-BA84-6F1AB79F89E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +53,22 @@ Global
 		{43E7DA50-7718-401C-BD2F-FF64B4092464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43E7DA50-7718-401C-BD2F-FF64B4092464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43E7DA50-7718-401C-BD2F-FF64B4092464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE4D53E-7901-4A00-B8A9-4BD2BD0CC3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE4D53E-7901-4A00-B8A9-4BD2BD0CC3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE4D53E-7901-4A00-B8A9-4BD2BD0CC3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE4D53E-7901-4A00-B8A9-4BD2BD0CC3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF760B5-8C1E-43A6-B2AE-B8F9EAA62AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF760B5-8C1E-43A6-B2AE-B8F9EAA62AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF760B5-8C1E-43A6-B2AE-B8F9EAA62AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF760B5-8C1E-43A6-B2AE-B8F9EAA62AFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C433BD0A-E6E6-4978-BED1-E63F1C5115B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C433BD0A-E6E6-4978-BED1-E63F1C5115B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C433BD0A-E6E6-4978-BED1-E63F1C5115B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C433BD0A-E6E6-4978-BED1-E63F1C5115B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48165F72-DD62-4C8C-BA84-6F1AB79F89E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48165F72-DD62-4C8C-BA84-6F1AB79F89E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48165F72-DD62-4C8C-BA84-6F1AB79F89E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48165F72-DD62-4C8C-BA84-6F1AB79F89E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

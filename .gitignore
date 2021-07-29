@@ -46,10 +46,6 @@
 *.mod*
 *.cmd
 .tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
 MyVilla/MyVilla_Client/bin/
 MyVilla/MyVilla_Client/obj/
 MyVilla/MyVilla_Server/bin/
@@ -57,7 +53,6 @@ MyVilla/MyVilla_Server/obj/
 MyVilla/.vs/
 MyVilla/MyVilla.Client/obj/
 MyVilla/MyVilla.Server/obj/
-MyVilla/MyVilla.Client/bin/Debug/net5.0/wwwroot/_framework/dotnet.5.0.7.js
 MyVilla/MyVilla.Client/bin/
 MyVilla/MyVilla.Server/bin/
 MyVilla/BasicBlazor/bin/
@@ -74,3 +69,9 @@ MyVilla/Movies.Server/bin/
 MyVilla/Movies.Server/obj/
 MyVilla/Movies.Shared/bin/
 MyVilla/Movies.Shared/obj/
+MyVilla/MyVilla.Business/obj/
+MyVilla/MyVilla.Common/obj/
+MyVilla/MyVilla.DataAccess/bin/
+MyVilla/MyVilla.DataAccess/obj/
+MyVilla/MyVilla.Common/bin/
+MyVilla/MyVilla.Business/bin/
