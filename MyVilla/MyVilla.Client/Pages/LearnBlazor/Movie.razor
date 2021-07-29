@@ -1,0 +1,49 @@
+﻿@page "/movie"
+
+<p>Selected item: @count</p>
+
+<IndividualMovie Event1="Event1" Title="Event 1" />
+<br />
+<IndividualMovie Title="Event 2" Event2="Event2Change" />
+<p>Current value: @value</p>
+
+<br />
+<IndividualMovie Title="Event 3" Event3="MouseClickButton" />
+<p>@textEvent3</p>
+<br />
+<h3>Log</h3>
+@foreach (var item in logs)
+{
+    <p>@item</p>
+}
+
+@code {
+
+    private int count = 0;
+    string value = string.Empty;
+
+    private List<string> logs { get; set; } = new List<string>();
+
+    // Event 1
+
+    private void Event1()
+    {
+        logs.Add("Event 1 click");
+    }
+
+    // Event 2
+
+    public void Event2Change(string valueSelected)
+    {
+        value = valueSelected;
+    }
+
+    // Event 3
+
+    private string textEvent3 = string.Empty;
+
+    private void MouseClickButton(MouseEventArgs args)
+    {
+        textEvent3 = "Mouse click button";
+    }
+}
