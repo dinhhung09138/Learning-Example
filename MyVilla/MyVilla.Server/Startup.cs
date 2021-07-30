@@ -14,6 +14,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MyVilla.Business.Mapper;
+using MyVilla.Business.Repository.IRepository;
+using MyVilla.Business.Repository;
+using MyVilla.Server.Service.IService;
+using MyVilla.Server.Service;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyVilla.Server
 {
@@ -32,6 +37,10 @@ namespace MyVilla.Server
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //   .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders()
+            //   .AddDefaultUI();
+
             //// Auto Mapper Configurations
             //var mapperConfig = new MapperConfiguration(mc =>
             //{
@@ -40,6 +49,13 @@ namespace MyVilla.Server
             //IMapper mapper = mapperConfig.CreateMapper();
             //services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
+            services.AddScoped<IAmenityRepository, AmenityRepository>();
+            //services.AddScoped<IDbInitializer, DbInitializer>();
+            services.AddScoped<IHotelImagesRepository, HotelImagesRepository>();
+            services.AddScoped<IRoomOrderDetailsRepository, RoomOrderDetailsRepository>();
+            services.AddScoped<IFileUpload, FileUpload>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
