@@ -37,9 +37,9 @@ namespace MyVilla.Server
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //   .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders()
-            //   .AddDefaultUI();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+               .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders()
+               .AddDefaultUI();
 
             //// Auto Mapper Configurations
             //var mapperConfig = new MapperConfiguration(mc =>
@@ -52,12 +52,13 @@ namespace MyVilla.Server
 
             services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
             services.AddScoped<IAmenityRepository, AmenityRepository>();
-            //services.AddScoped<IDbInitializer, DbInitializer>();
+            services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddScoped<IHotelImagesRepository, HotelImagesRepository>();
             services.AddScoped<IRoomOrderDetailsRepository, RoomOrderDetailsRepository>();
             services.AddScoped<IFileUpload, FileUpload>();
 
             services.AddRazorPages();
+            services.AddHttpContextAccessor();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
         }
@@ -80,6 +81,8 @@ namespace MyVilla.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

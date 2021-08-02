@@ -124,12 +124,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        //var authenticationState = await AuthenticationState;
-        //if (!authenticationState.User.IsInRole(Common.SD.Role_Admin))
-        //{
-        //    var uri = new Uri(NavigationManager.Uri);
-        //    NavigationManager.NavigateTo($"/identity/account/login?returnUrl={uri.LocalPath}");
-        //}
+        var authenticationState = await AuthenticationState;
+        if (!authenticationState.User.IsInRole(Common.SD.Role_Admin))
+        {
+            var uri = new Uri(NavigationManager.Uri);
+            NavigationManager.NavigateTo($"/identity/account/login?returnUrl={uri.LocalPath}");
+        }
         if (Id != null)
         {
             //updating
