@@ -1,0 +1,21 @@
+﻿<h3 style="background-color: #9fe2b1; color: white; padding: 20px;">
+    @Title
+</h3>
+@ContentA
+<br/>
+@ContentB
+
+<br/>
+<b>Grand Child</b>
+<GrandChild />
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ContentA { get; set; }
+
+    [Parameter]
+    public RenderFragment ContentB { get; set; }
+}

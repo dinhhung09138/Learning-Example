@@ -1,0 +1,46 @@
+﻿@page "/movie"
+
+@using Component.Models
+
+<h3>Movie</h3>
+
+@code {
+
+    List<MovieModel> list = new List<MovieModel>();
+
+    protected override void OnInitialized()
+    {
+        list.Add(new MovieModel()
+        {
+            Name = "Man of Steel (2013)",
+            Description = "Hành động, phiêu lưu, khoa học viễn tưởng",
+            Author = "Zack Snyder."
+        });
+        list.Add(new MovieModel()
+        {
+            Name = "Superman: Dawn of Justice (2016)",
+            Description = "Hành động, phiêu lưu, khoa học viễn tưởng",
+            Author = "Zack Snyder"
+        });
+        list.Add(new MovieModel()
+        {
+            Name = "Suicide Squad (2016)",
+            Description = "Thể loại: Hành động, phiêu lưu, huyền ảo",
+            Author = "David Ayer."
+        });
+        list.Add(new MovieModel()
+        {
+            Name = "Wonder Woman (2017)",
+            Description = "Thể loại: Hành động, phiêu lưu, huyền ảo",
+            Author = "Patty Jenkins."
+        });
+        list.Add(new MovieModel()
+        {
+            Name = "Justice League (2017)",
+            Description = "Thể loại: Hành động, phiêu lưu, huyền ảo",
+            Author = "Zack Snyder."
+        });
+    }
+
+
+}

@@ -1,0 +1,11 @@
+﻿<h3>GrandChild</h3>
+<h4>@Message</h4>
+<h4>@Data</h4>
+
+@code {
+    [CascadingParameter(Name = "ParrentMessage")]
+    public string Message { get; set; }
+
+    [CascadingParameter(Name = "Data")]
+    public string Data { get; set; }
+}

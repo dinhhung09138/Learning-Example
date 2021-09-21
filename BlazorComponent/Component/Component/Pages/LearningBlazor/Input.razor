@@ -1,0 +1,19 @@
+﻿
+
+@*<input type="@Type" value="@Value" @attributes="@Attrs" />*@
+<div @attributes="@Attrs">
+    @Type @Value
+</div>
+
+@code {
+
+    [Parameter]
+    public string Type { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attrs { get; set; }
+
+}

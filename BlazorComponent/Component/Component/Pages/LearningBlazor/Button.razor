@@ -1,0 +1,21 @@
+﻿@typeparam TItem
+
+<button @onclick="@OnClick">@Title</button>
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; } = "Button";
+
+    [Parameter]
+    public TItem Data { get; set; }
+
+    [Parameter]
+    public EventCallback<TItem> OnEventClick { get; set; }
+
+    private async Task OnClick()
+    {
+        Console.WriteLine("Button click");
+        await OnEventClick.InvokeAsync(Data);
+    }
+}
