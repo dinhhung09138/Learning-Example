@@ -1,5 +1,7 @@
 ﻿@typeparam TItem
 
+@inject IJSRuntime js
+
 <button @onclick="@OnClick">@Title</button>
 
 @code {
@@ -13,9 +15,34 @@
     [Parameter]
     public EventCallback<TItem> OnEventClick { get; set; }
 
+    IJSObjectReference module;
+
     private async Task OnClick()
     {
+        module = await js.InvokeAsync<IJSObjectReference>("import", "./button.js");
+
+        await module.InvokeVoidAsync("alertMessage", "Are you want to delete");
+
         Console.WriteLine("Button click");
+
+        //await js.InvokeVoidAsync("writeLog", "Call javascript from c# code");
+
+        var returnValue = await js.InvokeAsync<int>("writeLog", "Call javascript from c# code");
+
+        Console.WriteLine(returnValue);
+
+        await js.InvokeVoidAsync("callStaticMethod");
+
+        await js.InvokeVoidAsync("callInstanceMethod", DotNetObjectReference.Create(this));
+
         await OnEventClick.InvokeAsync(Data);
     }
+
+    [JSInvokable]
+    public async Task InstanceMethod()
+    {
+        await Task.Delay(0);
+        Console.WriteLine("This is the instance method");
+    }
+
 }
