@@ -1,34 +1,31 @@
 ﻿@page "/parent"
 
-<h3>Parent Component</h3>
-<CascadingValue Value="@data" Name="Data">
-    <CascadingValue Value="@parentMessag" Name="ParrentMessage">
-        <Child Title="This is the title from parent component">
-            <ContentA>
-                <h2>Content A</h2>
-            </ContentA>
-            <ContentB>
-                <h3>Content B</h3>
-            </ContentB>
+
+<div style="border: 1px solid #2523e1; padding: 10px;">
+    <h3>Parent Component</h3>
+    <CascadingValue Value="@message" Name="MessageFromParent">
+        <Child Title="Child component">
+            <ChildContent1>
+                <h2>Child content</h2>
+            </ChildContent1>
+            <ChildContent2>
+                <h3>Child Content</h3>
+                <Button TITem="string" Data="@("Hello world")" OnClickEvent="@((arg) => Click(arg))" />
+                <Button TITem="int" Data="@(2)" OnClickEvent="@((arg) => Click(arg))" />
+                <br/>
+            </ChildContent2>
         </Child>
     </CascadingValue>
-</CascadingValue>
+</div>
 
 
-
-<Input Type="text" Value="123" style="width: 200px; padding: 10px;" />
-
-<Button Title="Button" TItem="string" Data="@message" OnEventClick="@ParentClickEvent" />
 
 @code {
 
-    string parentMessag = "This is the message from parent";
-    string data = "This is the data from parent component";
+    string message = "Message from parent component";
 
-    private string message = "Generic value";
-
-    private void ParentClickEvent(string value)
+    private void Click(object message)
     {
-        Console.WriteLine(value);
+        Console.WriteLine(message);
     }
 }

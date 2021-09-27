@@ -1,11 +1,14 @@
-﻿<h3>GrandChild</h3>
-<h4>@Message</h4>
-<h4>@Data</h4>
+﻿<div style="border: 1px solid #4cff00; padding: 10px;">
+    <h3>@Title</h3>
+    <span>@Message</span>
+</div>
 
 @code {
-    [CascadingParameter(Name = "ParrentMessage")]
-    public string Message { get; set; }
 
-    [CascadingParameter(Name = "Data")]
-    public string Data { get; set; }
+    [Parameter]
+    public string Title { get; set; }
+
+    [CascadingParameter(Name = "MessageFromParent")]
+    public string Message { get; set; } = "Default";
+
 }

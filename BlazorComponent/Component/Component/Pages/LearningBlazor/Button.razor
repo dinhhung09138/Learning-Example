@@ -1,48 +1,27 @@
-﻿@typeparam TItem
+﻿@typeparam TITem
 
 @inject IJSRuntime js
 
-<button @onclick="@OnClick">@Title</button>
+<button class="btn" @onclick="@OnClick">Delete</button>
+
 
 @code {
 
     [Parameter]
-    public string Title { get; set; } = "Button";
+    public TITem Data { get; set; }
 
     [Parameter]
-    public TItem Data { get; set; }
-
-    [Parameter]
-    public EventCallback<TItem> OnEventClick { get; set; }
-
-    IJSObjectReference module;
+    public EventCallback<TITem> OnClickEvent { get; set; }
 
     private async Task OnClick()
     {
-        module = await js.InvokeAsync<IJSObjectReference>("import", "./button.js");
-
-        await module.InvokeVoidAsync("alertMessage", "Are you want to delete");
-
-        Console.WriteLine("Button click");
-
-        //await js.InvokeVoidAsync("writeLog", "Call javascript from c# code");
-
-        var returnValue = await js.InvokeAsync<int>("writeLog", "Call javascript from c# code");
-
-        Console.WriteLine(returnValue);
-
-        await js.InvokeVoidAsync("callStaticMethod");
-
         await js.InvokeVoidAsync("callInstanceMethod", DotNetObjectReference.Create(this));
-
-        await OnEventClick.InvokeAsync(Data);
     }
 
     [JSInvokable]
     public async Task InstanceMethod()
     {
-        await Task.Delay(0);
-        Console.WriteLine("This is the instance method");
+        await OnClickEvent.InvokeAsync(Data);
     }
 
 }

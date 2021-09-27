@@ -1,0 +1,45 @@
+﻿
+@using Component.Models; 
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Data.Any() == false)
+        {
+            <tr>
+                <td colspan="2">Data not found</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Data)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Author</td>
+                    <td>
+                        <Component.Pages.LearningBlazor.Button TITem="MovieModel" Data="@item" OnClickEvent="@((arg) => { Delete(arg); })" />
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+
+    [Parameter]
+    public List<MovieModel> Data { get; set; }
+
+    private void Delete(MovieModel item)
+    {
+        Data.Remove(item);
+        StateHasChanged();
+    }
+
+}
