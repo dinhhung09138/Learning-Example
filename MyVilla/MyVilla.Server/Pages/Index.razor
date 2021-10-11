@@ -17,6 +17,9 @@ Price: @room.Price
 <br/>
 <input type="number" @bind-value="@room.Price" @bind-value:event="oninput" />
 
+<br/>
+<MyVilla.Server.Pages.Learning.Parent />
+
 @code {
     Room room = new Room()
     {

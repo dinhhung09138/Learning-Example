@@ -1,0 +1,15 @@
+﻿<CascadingValue Name="CascadingMessage" Value="@cascadingMessage">
+    <div style="border: 1px solid #ff0000; padding: 10px;">
+        <h1>Parent Component</h1>
+        <Child Message="Message pass from parent component" />
+    </div>
+</CascadingValue>
+
+
+@code {
+    [Parameter]
+    public string ParentMessage { get; set; } = string.Empty;
+
+
+    private string cascadingMessage = "This is cascading message from parent component to grand child component";
+}

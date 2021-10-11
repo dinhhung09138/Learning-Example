@@ -1,0 +1,14 @@
+﻿<div style="border: 1px solid #1f1eb4; padding: 10px;">
+    <h1>Grand Child Component</h1>
+    <p>@Message</p>
+    <p>@CascadingMessage</p>
+</div>
+
+@code {
+    [Parameter]
+    public string Message { get; set; } = string.Empty;
+
+    [CascadingParameter(Name = "CascadingMessage")]
+    public string CascadingMessage { get; set; } = string.Empty;
+
+}
