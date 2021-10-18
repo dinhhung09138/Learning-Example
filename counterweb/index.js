@@ -3,22 +3,18 @@ const redis = require('redis');
 
 const app = express();
 const client = redis.createClient({
-    // host: 'http://redis-server.abc', Normal way
-    host: 'redis-server', // mean redis host name
-    port: 6379
+  host: 'redis-server',
+  port: 6379,
 });
-
-// Set default value
-client.set('visit', 0);
+client.set('visits', 0);
 
 app.get('/', (req, res) => {
-    client.get('visit', (err, visits) => {
-        redis.sentd('Number of visits is ' + visits);
-        // Counter
-        client.set('visit', parseInt(visits) + 1);
-    });
+  client.get('visits', (err, visits) => {
+    res.send('Number of visits ' + visits);
+    client.set('visits', parseInt(visits) + 1);
+  });
 });
 
 app.listen(8081, () => {
-    console.log('Listening on port 8081');
+  console.log('listening on port 8081');
 });
